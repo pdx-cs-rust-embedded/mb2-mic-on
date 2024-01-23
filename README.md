@@ -9,7 +9,6 @@ levels of abstraction:
 * `mic-on-pac`: Uses `nrf52833-pac`.
 * `mic-on-hal`: Uses `nrf52833-hal`.
 * `mic-on-board`: Uses `microbit-v2`.
-* `mic-on-embassy`: Uses Embassy `microbit-bsp`.
 
 # Acknowledgments
 

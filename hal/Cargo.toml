@@ -1,0 +1,10 @@
+[package]
+name = "mic-on-hal"
+version = "0.1.0"
+edition = "2021"
+resolver = "2"
+
+[dependencies]
+cortex-m-rt = "0.7.3"
+nrf52833-hal = "0.16.0"
+cortex-m = { version = "0.7", features = ["critical-section-single-core"] }

@@ -1,0 +1,9 @@
+[package]
+name = "mic-on-pac"
+version = "0.1.0"
+edition = "2021"
+resolver = "2"
+
+[dependencies]
+cortex-m-rt = "0.7.3"
+nrf52833-pac = "0.12.2"

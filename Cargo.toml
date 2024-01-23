@@ -1,10 +1,9 @@
-[package]
-name = "mb2-mic-on"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-cortex-m-rt = "0.7.3"
-microbit-v2 = "0.13.0"
-nrf52833-hal = "0.16.0"
-nrf52833-pac = "0.12.2"
+[workspace]
+resolver = "2"
+members = [
+    "raw",
+    "structured",
+    "pac",
+    "hal",
+    "board",
+]
