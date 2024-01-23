@@ -2,7 +2,7 @@
 #![no_std]
 
 use cortex_m_rt::entry;
-use nrf52833_pac;
+extern crate nrf52833_pac;
 
 #[entry]
 fn main() -> ! {
