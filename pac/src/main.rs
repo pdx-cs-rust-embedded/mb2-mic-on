@@ -2,8 +2,17 @@
 #![no_std]
 #![allow(clippy::empty_loop)]
 
+use core::arch::asm;
+
 use cortex_m_rt::entry;
 extern crate nrf52833_pac;
+
+#[inline(never)]
+fn delay(msecs: u32) {
+    for _ in 0..8000 * msecs {
+        unsafe { asm!("nop") };
+    }
+}
 
 #[entry]
 fn main() -> ! {
@@ -19,6 +28,8 @@ fn main() -> ! {
         w
     });
     p0.outset.write(|w| w.pin20().set());
+    delay(3000);
+    p0.outclr.write(|w| w.pin20().clear());
 
     // Loop forever.
     loop {}

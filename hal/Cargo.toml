@@ -6,4 +6,5 @@ resolver = "2"
 
 [dependencies]
 cortex-m-rt = "0.7.5"
+embedded-hal = "1.0.0"
 nrf52833-hal = "0.18.0"

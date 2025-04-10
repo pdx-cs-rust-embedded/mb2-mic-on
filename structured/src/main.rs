@@ -3,6 +3,7 @@
 #![allow(clippy::empty_loop)]
 
 use cortex_m_rt::entry;
+use core::arch::asm;
 
 const GPIO_BASE: usize = 0x50000000;
 
@@ -109,6 +110,13 @@ fn set_pin(port: Port, pin: usize, output: Output) {
     }
 }
 
+#[inline(never)]
+fn delay(msecs: u32) {
+    for _ in 0..8000 * msecs {
+        unsafe { asm!("nop") };
+    }
+}
+
 #[entry]
 fn main() -> ! {
     // Write 1 to MIC_POWER pin.
@@ -123,6 +131,8 @@ fn main() -> ! {
     );
 
     set_pin(Port::P0, 20, Output::High);
+    delay(3000);
+    set_pin(Port::P0, 20, Output::Low);
 
     // Loop forever.
     loop {}
