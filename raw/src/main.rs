@@ -1,5 +1,6 @@
 #![no_main]
 #![no_std]
+#![allow(clippy::empty_loop)]
 
 use cortex_m_rt::entry;
 
@@ -13,7 +14,10 @@ fn main() -> ! {
         let cr = (base + 0x700 + 4 * 20) as *mut u32;
         let mut config = 0;
         // A: Output pin.
-        config |= 1 << 0;
+        #[allow(clippy::identity_op)]
+        {
+            config |= 1 << 0;
+        }
         // B: Disable input buffer.
         config |= 1 << 1;
         // C: Disable pull-up and pull-down resistors.

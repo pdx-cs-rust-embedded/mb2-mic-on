@@ -1,5 +1,6 @@
 #![no_main]
 #![no_std]
+#![allow(clippy::empty_loop)]
 
 use cortex_m_rt::entry;
 
@@ -78,7 +79,10 @@ fn write_pin_config(
 ) {
     let addr = (port_base(port) + 0x700 + pin * 4) as *mut u32;
     let mut config = 0;
-    config |= (dir as u32) << 0;
+    #[allow(clippy::identity_op)]
+    {
+        config |= (dir as u32) << 0;
+    }
     config |= (input as u32) << 1;
     config |= (pull as u32) << 2;
     config |= (drive as u32) << 8;
@@ -87,7 +91,6 @@ fn write_pin_config(
         addr.write_volatile(config);
     }
 }
-    
 
 fn set_pin(port: Port, pin: usize, output: Output) {
     match output {

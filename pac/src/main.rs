@@ -1,5 +1,6 @@
 #![no_main]
 #![no_std]
+#![allow(clippy::empty_loop)]
 
 use cortex_m_rt::entry;
 extern crate nrf52833_pac;
