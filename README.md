@@ -12,8 +12,12 @@ abstraction:
 * `board`: Uses `microbit-v2`.
 
 All but `raw` turn the mic back off after about three
-seconds.  You will need to build the pre-`hal` code with
-`--release` to get the timing right.
+seconds.
+
+You will need to build the pre-`hal` code with `--release`
+to get the timing right. The delay spin-loop will generate a
+lot of extra instructions per iteration in debug mode, since
+it will call an iterator `next()` method each iteration.
 
 These [setup](./SETUP.md) commands will get your Linux box
 set up to run this stuff. Similar things for other platforms.
